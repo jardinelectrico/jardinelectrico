@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name – Portfolio</title>
+<meta name="description" content="Portfolio of Your Name">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef1f5;
+    --ink: #14213d;
+    --muted: #55607a;
+    --line: #c9d1de;
+    --accent: #2b59ff;
+    --tile: #dfe5ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10162a;
+      --ink: #e8ecf6;
+      --muted: #9aa6c2;
+      --line: #2a3555;
+      --accent: #7a9bff;
+      --tile: #1b2440;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+  header nav { display: flex; gap: 1.5rem; padding: 1.5rem 0; }
+  header nav a { text-decoration: none; color: var(--muted); }
+  header nav a:hover { color: var(--accent); }
+
+  .hero { padding: 4rem 0 3rem; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 9vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem;
+    font-weight: 700;
+  }
+  .hero p { max-width: 34rem; font-size: 1.25rem; color: var(--muted); margin: 0; }
+
+  section { padding: 3rem 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.5rem; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
+
+  .projects { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .project a { text-decoration: none; display: block; }
+  .thumb {
+    aspect-ratio: 4 / 3;
+    background: var(--tile);
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    overflow: hidden;
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .project h3 { margin: 0; font-size: 1.125rem; }
+  .project p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.975rem; }
+  .project a:hover h3 { color: var(--accent); }
+
+  .about { max-width: 38rem; }
+  .about p { margin: 0 0 1rem; }
+
+  ul.contact { list-style: none; padding: 0; margin: 0; }
+  ul.contact li { margin-bottom: 0.4rem; }
+
+  footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <!-- Replace with your name and a one-sentence intro -->
+      <h1>Your Name</h1>
+      <p>I'm a [what you do] based in [where]. I make [what you make] for [who it's for].</p>
+    </div>
+
+    <section id="work">
+      <h2>Selected work</h2>
+      <div class="projects">
+
+        <!-- Copy one <article> block per project.
+             To use a picture: put the file in the same folder and replace the
+             placeholder text inside .thumb with <img src="photo.jpg" alt="Describe the image"> -->
+        <article class="project">
+          <a href="#">
+            <div class="thumb">Project image</div>
+            <h3>Project one</h3>
+            <p>One line about what it is. 2026</p>
+          </a>
+        </article>
+
+        <article class="project">
+          <a href="#">
+            <div class="thumb">Project image</div>
+            <h3>Project two</h3>
+            <p>One line about what it is. 2025</p>
+          </a>
+        </article>
+
+        <article class="project">
+          <a href="#">
+            <div class="thumb">Project image</div>
+            <h3>Project three</h3>
+            <p>One line about what it is. 2024</p>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="about">
+        <p>Write two or three short paragraphs: who you are, what you work on, and what you're looking for (commissions, a job, collaborations).</p>
+        <p>Mention tools or materials you use if they matter to your work.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact">
+        <li><a href="mailto:you@example.com">you@example.com</a></li>
+        <li><a href="https://github.com/yourusername">GitHub</a></li>
+        <li><a href="https://instagram.com/yourusername">Instagram</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© 2026 Your Name</footer>
+</div>
+</body>
+</html>
