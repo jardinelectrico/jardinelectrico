@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project – Ricardo Alva</title>
+<meta name="description" content="Project work by Ricardo Alva">
+<style>
+  @font-face {
+    font-family: "Manifont";
+    src: url("BBBManifontGrotesk-Book.otf") format("opentype");
+    font-display: swap;
+  }
+  :root {
+    color-scheme: light;
+    --ink: #080808;
+    --muted: #252525;
+    --paper: rgba(255, 255, 255, 0.82);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+    background: #fff;
+    color: var(--ink);
+    font-family: "Manifont", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url("bcgente1.jpg") center / cover no-repeat;
+    filter: saturate(40%) brightness(110%);
+  }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid #175d45; outline-offset: 4px; }
+  .page { width: min(1120px, 100%); margin: 0 auto; padding: 1.5rem clamp(1rem, 4vw, 3rem) 4rem; }
+  .back-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .project-header { margin: clamp(2rem, 6vh, 4rem) 0 2rem; padding: 0.75rem 0; }
+  .project-header h1 { margin: 0; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; }
+  .project-header p { max-width: 42rem; margin: 0.75rem 0 0; color: var(--muted); }
+  .media-group + .media-group { margin-top: 3.5rem; }
+  .media-group h2 { margin: 0 0 1.25rem; font-size: 2.1rem; line-height: 1.2; text-align: center; }
+  .media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.75rem); }
+  .media-item { min-width: 0; margin: 0; }
+  .media-item img { display: block; width: 100%; height: auto; }
+  @media (max-width: 640px) {
+    .media-grid { grid-template-columns: 1fr; }
+    .project-header { margin-top: 2rem; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+  <header class="project-header">
+    <h1 id="project-title">Project</h1>
+    <p id="project-description"></p>
+  </header>
+  <div id="project-media" role="region" aria-label="Project images and videos"></div>
+</main>
+<script>
+  const projectData = {
+    "projection-mapping": {
+      title: "Projection Mapping",
+      description: "Selected projection mapping works.",
+      groups: [
+        {
+          title: "222",
+          media: [
+            { src: "casita04.gif", label: "Casita 04" },
+            { src: "casita01.gif", label: "Casita 01" },
+            { src: "casita02.gif", label: "Casita 02" },
+            { src: "casita03.gif", label: "Casita 03" }
+          ]
+        },
+        {
+          title: "Rayo",
+          media: [
+            { src: "mappingluis01.gif", label: "Mappingluis 01" },
+            { src: "mappingluis02.gif", label: "Mappingluis 02" }
+          ]
+        }
+      ]
+    }
+  };
+
+  const selectedProject = new URLSearchParams(window.location.search).get("project");
+  const project = projectData[selectedProject] || projectData["projection-mapping"];
+  document.title = `${project.title} – Ricardo Alva`;
+  document.querySelector("#project-title").textContent = project.title;
+  document.querySelector("#project-description").textContent = project.description;
+
+  const projectMedia = document.querySelector("#project-media");
+  const mediaGroups = project.groups || [{ title: "", media: project.media }];
+  mediaGroups.forEach((group) => {
+    const section = document.createElement("section");
+    section.className = "media-group";
+    if (group.title) {
+      const heading = document.createElement("h2");
+      heading.textContent = group.title;
+      section.append(heading);
+    }
+    const mediaGrid = document.createElement("div");
+    mediaGrid.className = "media-grid";
+    group.media.forEach((item) => {
+      const figure = document.createElement("figure");
+      figure.className = "media-item";
+      const image = document.createElement("img");
+      image.src = item.src;
+      image.alt = item.label;
+      image.loading = "lazy";
+      figure.append(image);
+      mediaGrid.append(figure);
+    });
+    section.append(mediaGrid);
+    projectMedia.append(section);
+  });
+</script>
+</body>
+</html>
