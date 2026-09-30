@@ -3,25 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Name – Portfolio</title>
-<meta name="description" content="Portfolio of Your Name">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&display=swap" rel="stylesheet">
+<title>Ricardo Alva – Portfolio</title>
+<meta name="description" content="Portfolio of Ricardo Alva">
 <style>
+  @font-face {
+    font-family: "Manifont";
+    src: url("BBBManifontGrotesk-Book.otf") format("opentype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Barlow Elastic";
+    src: url("Barlow-elasticc.otf") format("opentype");
+    font-display: swap;
+  }
   :root {
-    --bg: #eef1f5;
-    --ink: #14213d;
-    --muted: #55607a;
+    --bg: #f8f8f6;
+    --ink: #000000;
+    --muted: #111111;
     --line: #c9d1de;
     --accent: #2b59ff;
     --tile: #dfe5ee;
   }
-  @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: light) {
     :root {
       --bg: #10162a;
-      --ink: #e8ecf6;
-      --muted: #9aa6c2;
+      --ink: #000000;
+      --muted: #111111;
       --line: #2a3555;
       --accent: #7a9bff;
       --tile: #1b2440;
@@ -31,9 +38,9 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: var(--bg) url("bcgente1.jpg") center center / cover no-repeat fixed;
     color: var(--ink);
-    font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: "Manifont", system-ui, sans-serif;
     font-size: 1.0625rem;
     line-height: 1.6;
   }
@@ -59,7 +66,7 @@
   section { padding: 3rem 0; border-top: 1px solid var(--line); }
   h2 { font-size: 1.5rem; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
 
-  .projects { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .projects { display: grid; gap: 2rem; grid-template-columns: 1fr; }
   .project a { text-decoration: none; display: block; }
   .thumb {
     aspect-ratio: 4 / 3;
@@ -72,7 +79,12 @@
     font-size: 0.9rem;
     overflow: hidden;
   }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 220ms ease; }
+  .project a:hover .thumb img,
+  .project a:focus-visible .thumb img { transform: scale(1.04); }
+  @media (prefers-reduced-motion: reduce) {
+    .thumb img { transition: none; }
+  }
   .project h3 { margin: 0; font-size: 1.125rem; }
   .project p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.975rem; }
   .project a:hover h3 { color: var(--accent); }
@@ -82,6 +94,24 @@
 
   ul.contact { list-style: none; padding: 0; margin: 0; }
   ul.contact li { margin-bottom: 0.4rem; }
+  .instagram-link {
+    display: inline-flex;
+    color: inherit;
+    vertical-align: middle;
+  }
+  .instagram-link svg {
+    display: block;
+    width: 44px;
+    height: 44px;
+  }
+  ul.contact li:last-child {
+    display: flex;
+    justify-content: center;
+  }
+  ul.contact li:first-child {
+    display: flex;
+    justify-content: center;
+  }
 
   footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); }
 </style>
@@ -90,7 +120,7 @@
 <div class="wrap">
 
   <header>
-    <nav aria-label="Main">
+    <nav aria-label="Main navigation">
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
@@ -100,36 +130,36 @@
   <main>
     <div class="hero">
       <!-- Replace with your name and a one-sentence intro -->
-      <h1>Your Name</h1>
-      <p>I'm a [what you do] based in [where]. I make [what you make] for [who it's for].</p>
+      <h1>Ricardo Alva</h1>
+      <p>Artista visual multidisciplinario enfocado en la exploración de sistemas y herramientas para la exploración y el juego audiovisual.</p>
     </div>
 
     <section id="work">
-      <h2>Selected work</h2>
+      <h2>Proyectos</h2>
       <div class="projects">
 
         <!-- Copy one <article> block per project.
              To use a picture: put the file in the same folder and replace the
              placeholder text inside .thumb with <img src="photo.jpg" alt="Describe the image"> -->
         <article class="project">
-          <a href="#">
-            <div class="thumb">Project image</div>
-            <h3>Project one</h3>
+          <a href="project.html?project=projection-mapping">
+            <div class="thumb"><img src="green01.jpg" alt="Project one artwork"></div>
+            <h3>Projection Mapping</h3>
             <p>One line about what it is. 2026</p>
           </a>
         </article>
 
         <article class="project">
-          <a href="#">
-            <div class="thumb">Project image</div>
+          <a href="project.html?project=project-two">
+            <div class="thumb"><img src="green02.jpg" alt="Project two artwork"></div>
             <h3>Project two</h3>
             <p>One line about what it is. 2025</p>
           </a>
         </article>
 
         <article class="project">
-          <a href="#">
-            <div class="thumb">Project image</div>
+          <a href="project.html?project=project-three">
+            <div class="thumb"><img src="green03.jpg" alt="Project three artwork"></div>
             <h3>Project three</h3>
             <p>One line about what it is. 2024</p>
           </a>
@@ -141,22 +171,28 @@
     <section id="about">
       <h2>About</h2>
       <div class="about">
-        <p>Write two or three short paragraphs: who you are, what you work on, and what you're looking for (commissions, a job, collaborations).</p>
-        <p>Mention tools or materials you use if they matter to your work.</p>
+        <p>Artista visual con experiencia en videojuegos y arte 3D explorando los sistemas procedurales en tiempo real for (commissions, a job, collaborations).</p>
       </div>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
       <ul class="contact">
-        <li><a href="mailto:you@example.com">you@example.com</a></li>
-        <li><a href="https://github.com/yourusername">GitHub</a></li>
-        <li><a href="https://instagram.com/yourusername">Instagram</a></li>
+        <li><a href="jardinvisual@proton.me">jardinvisual@proton.me</a></li>
+        <li>
+          <a class="instagram-link" href="https://www.instagram.com/jardin__electrico/" aria-label="Instagram" title="Instagram">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+        </li>
       </ul>
     </section>
   </main>
 
-  <footer>© 2026 Your Name</footer>
+  <footer>© 2026 Ricardo Alva</footer>
 </div>
 </body>
 </html>
