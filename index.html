@@ -76,13 +76,13 @@
   section { padding: 3rem 0; border-top: 1px solid var(--line); }
   h2 { font-size: 1.5rem; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
 
-  .projects { position: relative; display: grid; gap: 2rem; grid-template-columns: 1fr; }
+  .projects { position: relative; display: grid; gap: 3rem; grid-template-columns: 1fr; }
   .project a { text-decoration: none; display: block; }
   .thumb {
     aspect-ratio: 4 / 3;
     background: var(--tile);
     border-radius: 6px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.35rem;
     display: grid;
     place-items: center;
     color: var(--muted);
@@ -90,6 +90,8 @@
     overflow: hidden;
   }
   .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 220ms ease; }
+  .thumb iframe { width: 100%; height: 100%; display: block; border: 0; }
+  .video-thumb { aspect-ratio: 16 / 9; }
   .project a:hover .thumb img,
   .project a:focus-visible .thumb img { transform: scale(1.04); }
   @media (prefers-reduced-motion: reduce) {
@@ -146,6 +148,21 @@
         <!-- Copy one <article> block per project.
              To use a picture: put the file in the same folder and replace the
              placeholder text inside .thumb with <img src="photo.jpg" alt="Describe the image"> -->
+        <article class="project">
+          <div class="thumb video-thumb">
+            <iframe
+              src="https://www.youtube.com/embed/A-qyWsPIScQ"
+              title="Anatomía de la imagen: Intervención visual de un archivo"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <h3>Anatomía de la imagen</h3>
+          <p>intervención visual de un archivo</p>
+        </article>
+
         <article class="project">
           <a href="project.html?project=projection-mapping">
             <div class="thumb">
