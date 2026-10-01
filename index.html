@@ -77,7 +77,6 @@
   h2 { font-size: 1.5rem; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
 
   .projects { position: relative; display: grid; gap: 2rem; grid-template-columns: 1fr; }
-  .project[hidden] { display: none; }
   .project a { text-decoration: none; display: block; }
   .thumb {
     aspect-ratio: 4 / 3;
@@ -98,14 +97,6 @@
   }
   .project h3 { margin: 0; font-size: 1.125rem; }
   .project p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.975rem; }
-  .project a:hover h3 { color: var(--accent); }
-  .slideshow-controls { position: absolute; z-index: 2; inset-inline: 0; top: calc(50% - 3.25rem); display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
-  .slideshow-controls button { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); font: inherit; cursor: pointer; pointer-events: auto; }
-  .slideshow-controls button:first-child { transform: translateX(-50%); }
-  .slideshow-controls button:last-child { transform: translateX(50%); }
-  .slideshow-controls button:hover { color: var(--accent); border-color: var(--accent); }
-  .slideshow-controls button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-  .slide-count { display: block; margin-top: 1rem; color: var(--muted); font-size: 0.9rem; text-align: center; }
 
   ul.contact { list-style: none; padding: 0; margin: 0; }
   ul.contact li { margin-bottom: 0.4rem; }
@@ -145,7 +136,7 @@
     <div class="hero">
       <!-- Replace with your name and a one-sentence intro -->
       <h1>Ricardo Alva</h1>
-      <p>Artista técnico y multidisciplinario con experiencia en la elaboración de modelado, animación y efectos visuales para videojuegos, actualmente trabajando en la creación de sistemas y herramientas para la exploración e intervención audiovisual en tiempo real.</p>
+      <p>Artista técnico y multidisciplinario con experiencia modelado 3D, animación 2D, 3D y efectos visuales para videojuegos, actualmente trabajando en la creación de sistemas y herramientas para la exploración e intervención audiovisual en tiempo real.</p>
     </div>
 
     <section id="work">
@@ -155,29 +146,47 @@
         <!-- Copy one <article> block per project.
              To use a picture: put the file in the same folder and replace the
              placeholder text inside .thumb with <img src="photo.jpg" alt="Describe the image"> -->
-        <article class="project project-slide" aria-current="true">
+        <article class="project">
           <a href="project.html?project=projection-mapping">
-            <div class="thumb"><img src="casita04.gif" alt="Casita 04 projection mapping artwork"></div>
+            <div class="thumb">
+              <img src="casita04.gif" alt="Casita 04 projection mapping artwork">
+            </div>
             <h3>222</h3>
-            <p>Projection Mapping</p>
+            <p>Projection Mapping en soporte de papel</p>
           </a>
         </article>
 
-        <article class="project project-slide" hidden>
-          <a href="project.html?project=projection-mapping">
-            <div class="thumb"><img src="mappingluis01.gif" alt="Rayo projection mapping artwork"></div>
+        <article class="project">
+          <a href="project.html?project=blur">
+            <div class="thumb">
+              <img src="blurstill.jpg" alt="Blur movement-detection installation artwork">
+            </div>
+            <h3>Blur</h3>
+            <p>Sistema de detección de movimiento en tiempo real para exploraciones del cuerpo</p>
+          </a>
+        </article>
+
+        <article class="project">
+          <a href="project.html?project=rayo">
+            <div class="thumb">
+              <img src="mappingluis01-still.jpg" alt="Rayo installation artwork">
+            </div>
             <h3>Rayo</h3>
-            <p>Projection Mapping</p>
+            <p>Instalación audiovisual en escultura de metal</p>
           </a>
         </article>
 
-        <nav class="slideshow-controls" aria-label="Project slideshow controls">
-          <button type="button" data-slide-step="-1" aria-label="Previous project">←</button>
-          <button type="button" data-slide-step="1" aria-label="Next project">→</button>
-        </nav>
+        <article class="project">
+          <a href="project.html?project=pulsiones">
+            <div class="thumb">
+              <img src="pulsiones-still.jpg" alt="Pulsiones audiovisual-reactive visuals installation">
+            </div>
+            <h3>Pulsiones</h3>
+            <p>Visuales audioreactivos</p>
+          </a>
+        </article>
 
       </div>
-      <span class="slide-count" aria-live="polite">1 / 2</span>
     </section>
 
     <section id="contact">
@@ -199,29 +208,5 @@
 
   <footer>© 2026 Ricardo Alva</footer>
 </div>
-<script>
-  const projectSlides = Array.from(document.querySelectorAll(".project-slide"));
-  const slideCount = document.querySelector(".slide-count");
-  let activeSlide = 0;
-
-  function showProjectSlide(index) {
-    activeSlide = (index + projectSlides.length) % projectSlides.length;
-    projectSlides.forEach((slide, slideIndex) => {
-      slide.hidden = slideIndex !== activeSlide;
-      if (slideIndex === activeSlide) {
-        slide.setAttribute("aria-current", "true");
-      } else {
-        slide.removeAttribute("aria-current");
-      }
-    });
-    slideCount.textContent = `${activeSlide + 1} / ${projectSlides.length}`;
-  }
-
-  document.querySelectorAll("[data-slide-step]").forEach((button) => {
-    button.addEventListener("click", () => {
-      showProjectSlide(activeSlide + Number(button.dataset.slideStep));
-    });
-  });
-</script>
 </body>
 </html>
