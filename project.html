@@ -48,6 +48,7 @@
   .media-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 3vw, 2.75rem); }
   .media-item { min-width: 0; margin: 0; }
   .media-item img { display: block; width: 100%; height: auto; }
+  .media-item iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; }
   @media (max-width: 640px) {
     .project-header { margin-top: 2rem; }
   }
@@ -83,14 +84,22 @@
         { src: "mappingluis03.gif", label: "Rayo installation artwork 03" }
       ]
     },
+    "vj-set": {
+      title: "Vj set",
+      media: [
+        { youtubeId: "0O29Jvt-KC0", label: "Vj set performance 01" },
+        { youtubeId: "m1IkEFCVwJk", label: "Vj set performance 02" },
+        { youtubeId: "F-EfvFudkKk", label: "Vj set performance 03" }
+      ]
+    },
     blur: {
       title: "Patch de detección de movimiento en touchdesigner",
       media: [
-        { src: "movsystem01.gif", label: "Blur movement detection exploration 01" },
-        { src: "movsystem02.gif", label: "Blur movement detection exploration 02" },
-        { src: "movsystem03.gif", label: "Blur movement detection exploration 03" },
-        { src: "movsystem04.gif", label: "Blur movement detection exploration 04" },
-        { src: "movsystem05.gif", label: "Blur movement detection exploration 05" }
+        { youtubeId: "ionB1Eemk1U", label: "Blur project video" },
+        { youtubeId: "l_DX7mMhg-g", label: "Blur movement detection exploration 02" },
+        { youtubeId: "FLDVB0_1-CU", label: "Blur movement detection exploration 03" },
+        { youtubeId: "sbYNmPhU1YI", label: "Blur movement detection exploration 04" },
+        { youtubeId: "q4Tzy1fnaDY", label: "Blur movement detection exploration 05" }
       ]
     },
     pulsiones: {
@@ -112,11 +121,22 @@
   project.media.forEach((item) => {
     const figure = document.createElement("figure");
     figure.className = "media-item";
-    const image = document.createElement("img");
-    image.src = item.src;
-    image.alt = item.label;
-    image.loading = "lazy";
-    figure.append(image);
+    if (item.youtubeId) {
+      const video = document.createElement("iframe");
+      video.src = `https://www.youtube.com/embed/${item.youtubeId}?controls=0&rel=0`;
+      video.title = item.label;
+      video.loading = "lazy";
+      video.referrerPolicy = "strict-origin-when-cross-origin";
+      video.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      video.allowFullscreen = true;
+      figure.append(video);
+    } else {
+      const image = document.createElement("img");
+      image.src = item.src;
+      image.alt = item.label;
+      image.loading = "lazy";
+      figure.append(image);
+    }
     projectMedia.append(figure);
   });
 </script>
